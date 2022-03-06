@@ -92,6 +92,8 @@ module.exports = {
             triviaCategory
         });
 
+        client.TriviaGames.set(interaction.channel.id, game);
+
         try {
             await game.start();
         } catch (err) {

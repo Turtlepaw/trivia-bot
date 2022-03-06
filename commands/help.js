@@ -32,7 +32,7 @@ module.exports = {
                 .setColor("BLURPLE")
                 .setTitle(`❓ Discord Trivia (Bot)`)
                 .addField(`👀 Creating a game`, `First enter \`/trivia\` in the chatbox and select \`/trivia\` from ${client.user} you can enter trivia options in the options text box's. Then your game should begin!`)
-                .addField(`📜 Defualt Options`, `Max Players: 50\nMin Players: 1\nType: \`MULTIPLE\`\nDifficulty: \`EASY\`\nAmount: 10\nCategory: 🎲 Random`)
+                //.addField(`📜 Defualt Options`, `Max Players: 50\nMin Players: 1\nType: \`MULTIPLE\`\nDifficulty: \`EASY\`\nAmount: 10\nCategory: 🎲 Random`)
             ]
         })
     }

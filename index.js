@@ -1,3 +1,4 @@
+const { Collection } = require("discord.js");
 const jsh = require("discordjsh");
 const { clientId, token } = require("./config.json");
 
@@ -11,3 +12,5 @@ const client = BuilderClient.create({
     intents: "GUILDS",
     partials: ["CHANNEL", "GUILD_MEMBER", "USER"]
 });
+
+client.TriviaGames = new Collection();
