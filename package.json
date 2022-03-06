@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Turtlepaw/trivia-bot#readme",
   "dependencies": {
-    "discord-trivia": "file:../discord-trivia"
+    "discord-trivia": "file:../discord-trivia",
+    "easy-trivia": "^1.2.0"
   }
 }
