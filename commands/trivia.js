@@ -77,7 +77,7 @@ module.exports = {
             questionType,
             questionDifficulty,
             triviaCategory
-        } = ["maxPlayerCount", "minPlayerCount", "questionAmount", "questionType", "questionDifficulty", "triviaCategory"]
+        } = ["max_players", "min_players", "amount", "type", "difficulty", "category"]
             .map(e => {
                 return interaction.options.getString(e) || null;
             });
