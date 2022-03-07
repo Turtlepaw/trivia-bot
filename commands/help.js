@@ -18,7 +18,6 @@ const data = new jsh.commandBuilder()
     .setDescription(`Learn how to use Discord Trivia bot.`);
 
 module.exports = {
-    devOnly: true,
     data,
     /**
      * Executes the command.

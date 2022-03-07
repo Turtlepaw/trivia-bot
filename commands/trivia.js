@@ -62,7 +62,6 @@ addStringOption(data, "max_players", "The max amount of players allowed to join 
 addStringOption(data, "min_players", "The mix amount of players needed to start the game.");
 
 module.exports = {
-    devOnly: true,
     data,
     /**
      * Executes the command.

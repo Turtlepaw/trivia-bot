@@ -8,7 +8,6 @@ const data = new jsh.commandBuilder()
     .setDescription(`Ends the game in the current channel.`);
 
 module.exports = {
-    devOnly: true,
     data,
     /**
      * Executes the command.
