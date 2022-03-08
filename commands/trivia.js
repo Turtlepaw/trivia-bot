@@ -1,7 +1,8 @@
 const jsh = require("discordjsh");
 const { TriviaManager } = require("../../turtletrivia");
-const { CommandInteraction, Client } = require("discord.js");
+const { CommandInteraction, Client, MessageEmbed, MessageButton } = require("discord.js");
 const ET = require("easy-trivia");
+const { BotHasPermissions } = require("../TriviaGamePermissionManager");
 
 function addStringOption(builder, name, description, req = false, vals) {
     builder.addStringOption(e => {
@@ -69,6 +70,28 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
+        if(BotHasPermissions(interaction.guild.me, interaction.channel).status){
+            return interaction.reply({
+                embeds: [
+                    new MessageEmbed()
+                    .setDescription(`It looks like I don't have the correct permissions in this channel!`)
+                    .setTitle(`👀 Invalid Bot Permissions`)
+                    .setColor("BLURPLE")
+                ],
+                components: [
+                    {
+                        type: 1,
+                        components: [
+                            new MessageButton()
+                            .setCustomId(`INVALID_PERMISSIONS`)
+                            .setLabel(`Fix Permissions`)
+                            .setStyle("DANGER")
+                        ]
+                    }
+                ]
+            });
+        }
+
         const trivia = new TriviaManager();
         const maxPlayerCount = interaction.options.getString("max_players");
         const minPlayerCount = interaction.options.getString("min_players");

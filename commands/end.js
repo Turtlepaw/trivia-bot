@@ -2,6 +2,7 @@ const jsh = require("discordjsh");
 const { TriviaManager, TriviaGame } = require("../../turtletrivia");
 const { CommandInteraction, Client } = require("discord.js");
 const ET = require("easy-trivia");
+const { Check } = require("../TriviaGamePermissionManager");
 
 const data = new jsh.commandBuilder()
     .setName("end")
@@ -18,39 +19,39 @@ module.exports = {
         /**
          * @type {TriviaGame}
          */
-         const Game = client.TriviaGames.get(interaction.channel.id);
+        const Game = client.TriviaGames.get(interaction.channel.id);
 
-         if(!interaction.member.permissions.has("MANAGE_MESSAGES")){
-             return interaction.reply({
-                 content: `Missing Permissions!`
-             });
-         }
-         
-         if(!Game){
-             return interaction.reply({
-                 ephemeral: true,
-                 content: `Game Not Found...`
-             });
-         }
+        if (Check(Game, interaction.member)) {
+            return interaction.reply({
+                content: `❌ Missing Permissions!`
+            });
+        }
 
-         if(Game.state == "ENDED"){
+        if (!Game) {
             return interaction.reply({
                 ephemeral: true,
-                content: `Game already ended...`
+                content: `❌ Game Not Found...`
             });
-         }
+        }
 
-         if(!["IN_PROGRESS", "QUEUE"].includes(Game.state)){
+        if (Game.state == "ENDED") {
             return interaction.reply({
                 ephemeral: true,
-                content: `Game is not in progress...`
+                content: `❌ Game already ended...`
             });
-         }
+        }
 
-         Game.end();
+        if (Game.state == "PENDING") {
+            return interaction.reply({
+                ephemeral: true,
+                content: `❌ Game is pending...`
+            });
+        }
 
-        interaction.reply({
-            content: `**<:check:950543140165648424> Game Ended!**`
+        Game.end();
+
+        await interaction.reply({
+            content: `**⏱️ Game Ended!**`
         });
     }
 }
