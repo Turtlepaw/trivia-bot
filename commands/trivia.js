@@ -70,23 +70,18 @@ module.exports = {
      */
     async execute(interaction, client) {
         const trivia = new TriviaManager();
-        const {
-            maxPlayerCount,
-            minPlayerCount,
-            questionAmount,
-            questionType,
-            questionDifficulty,
-            triviaCategory
-        } = ["maxPlayerCount", "minPlayerCount", "questionAmount", "questionType", "questionDifficulty", "triviaCategory"]
-            .map(e => {
-                return interaction.options.getString(e) || null;
-            });
+        const maxPlayerCount = interaction.options.getString("max_players");
+        const minPlayerCount = interaction.options.getString("min_players");
+        const questionAmount = interaction.options.getString("amount");
+        const questionType = interaction.options.getString("type");
+        const questionDifficulty = interaction.options.getString("difficulty");
+        const triviaCategory = interaction.options.getString("category");
 
         const game = trivia.createGame(interaction, {
             maxPlayerCount: maxPlayerCount || 50,
             minPlayerCount: minPlayerCount || 1,
             questionAmount: questionAmount || 10,
-            questionType: "multiple",
+            questionType: questionType || "multiple",
             questionDifficulty: questionDifficulty || "easy",
             triviaCategory
         });
@@ -97,7 +92,7 @@ module.exports = {
             await game.start();
         } catch (err) {
             console.error(err);
-            await interaction.reply(`**⚠️ Error!**\n\n\`\`\`${err}\`\`\``);
+            await interaction.reply(`**<:error:950543140031430708> Error!**\n\n\`\`\`${err}\`\`\``);
         }
     }
 }

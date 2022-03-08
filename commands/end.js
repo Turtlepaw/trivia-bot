@@ -50,7 +50,7 @@ module.exports = {
          Game.end();
 
         interaction.reply({
-            content: `\`✅\` Game Ended!`
+            content: `**<:check:950543140165648424> Game Ended!**`
         });
     }
 }

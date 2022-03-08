@@ -14,3 +14,4 @@ const client = BuilderClient.create({
 });
 
 client.TriviaGames = new Collection();
+client.Invite = "https://discord.com/api/oauth2/authorize?client_id=950242907489714217&scope=applications.commands+bot&permissions=51200";
