@@ -70,7 +70,7 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        if(BotHasPermissions(interaction.guild.me, interaction.channel).status){
+        if(!BotHasPermissions(interaction.guild.me, interaction.channel).status){
             return interaction.reply({
                 embeds: [
                     new MessageEmbed()
