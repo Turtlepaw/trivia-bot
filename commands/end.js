@@ -21,12 +21,6 @@ module.exports = {
          */
         const Game = client.TriviaGames.get(interaction.channel.id);
 
-        if (Check(Game, interaction.member)) {
-            return interaction.reply({
-                content: `❌ Missing Permissions!`
-            });
-        }
-
         if (!Game) {
             return interaction.reply({
                 ephemeral: true,
@@ -45,6 +39,12 @@ module.exports = {
             return interaction.reply({
                 ephemeral: true,
                 content: `❌ Game is pending...`
+            });
+        }
+        
+        if (Check(Game, interaction.member)) {
+            return interaction.reply({
+                content: `❌ Missing Permissions!`
             });
         }
 
