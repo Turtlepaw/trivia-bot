@@ -70,7 +70,7 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        if(!BotHasPermissions(interaction.guild.me, interaction.channel).status){
+        if(BotHasPermissions(interaction.guild.me, interaction.channel).status == false){
             return interaction.reply({
                 embeds: [
                     new MessageEmbed()
@@ -115,7 +115,7 @@ module.exports = {
             await game.start();
         } catch (err) {
             console.error(err);
-            await interaction.reply(`**<:error:950543140031430708> Error!**\n\n\`\`\`${err}\`\`\``);
+            await interaction.followUp(`**<:error:950543140031430708> Error!**\n\n\`\`\`${err}\`\`\``);
         }
     }
 }

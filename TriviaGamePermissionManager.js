@@ -1,4 +1,5 @@
 const { GuildMember, Client, Permissions, GuildChannel } = require("discord.js");
+const d = require("discord.js");
 const { TriviaGame } = require("../turtletrivia");
 
 /**
@@ -9,19 +10,25 @@ const { TriviaGame } = require("../turtletrivia");
 module.exports.Check = (game, member) => {
     if(game.hostMember.id == member.id){
         return true;
-    } else if(member.permissions.has(this.GetDefualtMemberPermissions())){
-        return true
+    } else if(member.permissions.any(this.GetDefualtMemberPermissions())){
+        return true;
+    } else if(member.permissions.has("ADMINISTRATOR")){
+        return true;
     } else {
         return false;
     }
 }
 
+/**
+ * @returns {d.PermissionString[]}
+ */
 module.exports.GetDefualtMemberPermissions = () => [
     "MANAGE_CHANNELS",
     "MANAGE_MESSAGES",
     "MANAGE_GUILD",
     "MANAGE_EVENTS",
-    "START_EMBEDDED_ACTIVITIES"
+    "START_EMBEDDED_ACTIVITIES",
+    "ADMINISTRATOR"
 ];
 
 module.exports.GetDefualtBotPermissions = () => {
@@ -39,7 +46,8 @@ module.exports.BotHasPermissions = (botMember, channel) => {
     if(channel.permissionsFor(botMember).has([
         "SEND_MESSAGES",
         "ATTACH_FILES",
-        "EMBED_LINKS"
+        "EMBED_LINKS",
+        "VIEW_CHANNEL"
     ])){
         return {
             status: true
