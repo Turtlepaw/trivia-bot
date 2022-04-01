@@ -42,7 +42,7 @@ module.exports = {
             });
         }
         
-        if (Check(Game, interaction.member)) {
+        if (!Check(Game, interaction.member)) {
             return interaction.reply({
                 content: `❌ Missing Permissions!`
             });
