@@ -1,6 +1,6 @@
 const { GuildMember, Client, Permissions, GuildChannel } = require("discord.js");
 const d = require("discord.js");
-const { TriviaGame } = require("../turtletrivia");
+const { TriviaGame } = require("discord-trivia");
 
 /**
  * 

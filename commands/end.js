@@ -1,5 +1,5 @@
 const jsh = require("discordjsh");
-const { TriviaManager, TriviaGame } = require("../../turtletrivia");
+const { TriviaManager, TriviaGame } = require("discord-trivia");
 const { CommandInteraction, Client } = require("discord.js");
 const ET = require("easy-trivia");
 const { Check } = require("../TriviaGamePermissionManager");
