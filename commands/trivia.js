@@ -1,7 +1,6 @@
 const jsh = require("discordjsh");
-const { TriviaGame, TriviaManager, EmbedGenerator, DiscordTriviaError } = require("discord-trivia");
+const { TriviaManager, TriviaCommandBuilder } = require("discord-trivia");
 const { CommandInteraction, Client, MessageEmbed, MessageButton } = require("discord.js");
-const ET = require("easy-trivia");
 const { BotHasPermissions } = require("../TriviaGamePermissionManager");
 
 function addStringOption(builder, name, description, req = false, vals) {
@@ -14,7 +13,9 @@ function addStringOption(builder, name, description, req = false, vals) {
     });
 }
 
-const data = new jsh.commandBuilder()
+const data = new TriviaCommandBuilder();
+
+new jsh.commandBuilder()
     .setName("trivia")
     .setDescription(`Creates a trivia game!`);
 

@@ -1,7 +1,6 @@
 const jsh = require("discordjsh");
-const { TriviaManager, TriviaGame } = require("discord-trivia");
+const { TriviaGame } = require("discord-trivia");
 const { CommandInteraction, Client } = require("discord.js");
-const ET = require("easy-trivia");
 const { Check } = require("../TriviaGamePermissionManager");
 
 const data = new jsh.commandBuilder()
@@ -28,21 +27,21 @@ module.exports = {
             });
         }
 
-        if (Game.state == "ENDED") {
+        if (Game.state == "ended") {
             return interaction.reply({
                 ephemeral: true,
                 content: `❌ Game already ended...`
             });
         }
 
-        if (Game.state == "PENDING") {
+        if (Game.state == "pending") {
             return interaction.reply({
                 ephemeral: true,
                 content: `❌ Game is pending...`
             });
         }
         
-        if (!Check(Game, interaction.member)) {
+        if (!Check(Game, interaction?.member)) {
             return interaction.reply({
                 content: `❌ Missing Permissions!`
             });

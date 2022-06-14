@@ -1,7 +1,6 @@
 const jsh = require("discordjsh");
 const { TriviaManager } = require("discord-trivia");
 const { CommandInteraction, Client, MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
-const ET = require("easy-trivia");
 const { URL } = require("../config");
 const { BotHasPermissions } = require("../TriviaGamePermissionManager");
 const SupportURL = "https://discord.gg/UYyyVbAAZb";
